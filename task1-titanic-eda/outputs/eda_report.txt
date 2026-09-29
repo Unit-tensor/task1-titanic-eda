@@ -1,0 +1,134 @@
+
+=== HEAD ===
+   survived  pclass     sex   age  sibsp  parch     fare embarked  class    who  adult_male deck  embark_town alive  alone
+0         0       3    male  22.0      1      0   7.2500        S  Third    man        True  NaN  Southampton    no  False
+1         1       1  female  38.0      1      0  71.2833        C  First  woman       False    C    Cherbourg   yes  False
+2         1       3  female  26.0      0      0   7.9250        S  Third  woman       False  NaN  Southampton   yes   True
+3         1       1  female  35.0      1      0  53.1000        S  First  woman       False    C  Southampton   yes  False
+4         0       3    male  35.0      0      0   8.0500        S  Third    man        True  NaN  Southampton    no   True
+
+=== SHAPE (rows, cols) ===
+(891, 15)
+
+=== DTYPES ===
+survived          int64
+pclass            int64
+sex                 str
+age             float64
+sibsp             int64
+parch             int64
+fare            float64
+embarked            str
+class          category
+who                 str
+adult_male         bool
+deck           category
+embark_town         str
+alive               str
+alone              bool
+
+=== DESCRIBE (numeric) ===
+       survived  pclass     age   sibsp   parch    fare
+count    891.00  891.00  714.00  891.00  891.00  891.00
+mean       0.38    2.31   29.70    0.52    0.38   32.20
+std        0.49    0.84   14.53    1.10    0.81   49.69
+min        0.00    1.00    0.42    0.00    0.00    0.00
+25%        0.00    2.00   20.12    0.00    0.00    7.91
+50%        0.00    3.00   28.00    0.00    0.00   14.45
+75%        1.00    3.00   38.00    1.00    0.00   31.00
+max        1.00    3.00   80.00    8.00    6.00  512.33
+
+=== DESCRIBE (categorical) ===
+         sex embarked  class  who adult_male deck  embark_town alive alone
+count    891      889    891  891        891  203          889   891   891
+unique     2        3      3    3          2    7            3     2     2
+top     male        S  Third  man       True    C  Southampton    no  True
+freq     577      644    491  537        537   59          644   549   537
+
+=== MISSING VALUES ===
+             count  percent
+age            177    19.87
+embarked         2     0.22
+deck           688    77.22
+embark_town      2     0.22
+
+=== MISSING AFTER CLEANING ===
+0
+
+=== DUPLICATE ROWS FOUND ===
+118
+
+=== SHAPE AFTER DROPPING DUPLICATES ===
+(773, 14)
+
+=== OVERALL SURVIVAL RATE ===
+41.53%
+
+=== SURVIVAL BY SEX ===
+        passengers  survivors  survival_rate
+sex                                         
+female         291        215          0.739
+male           482        106          0.220
+
+=== SURVIVAL BY PCLASS ===
+        passengers  survivors  survival_rate
+pclass                                      
+1              209        134          0.641
+2              164         83          0.506
+3              400        104          0.260
+
+=== SURVIVAL BY EMBARKED ===
+          passengers  survivors  survival_rate
+embarked                                      
+C                153         90          0.588
+Q                 58         20          0.345
+S                562        211          0.375
+
+=== SURVIVAL BY AGE_GROUP ===
+             passengers  survivors  survival_rate
+age_group                                        
+Child                68         39          0.574
+Teen                 67         30          0.448
+Young Adult         409        166          0.406
+Adult               208         81          0.389
+Senior               21          5          0.238
+
+=== SURVIVAL BY ALONE ===
+       passengers  survivors  survival_rate
+alone                                      
+False         337        172          0.510
+True          436        149          0.342
+
+=== SURVIVAL BY SEX x CLASS (pivot) ===
+pclass      1      2      3
+sex                        
+female  0.967  0.917  0.472
+male    0.385  0.185  0.161
+
+=== AVERAGE FARE & AGE BY CLASS ===
+        avg_fare  median_fare  avg_age
+pclass                                
+1          86.00        61.98    38.21
+2          21.89        18.75    29.84
+3          13.73         8.05    24.92
+
+=== FAMILY SIZE vs SURVIVAL ===
+             count   mean
+family_size              
+1              436  0.342
+2              153  0.549
+3              101  0.574
+4               28  0.714
+5               13  0.231
+6               22  0.136
+7               12  0.333
+8                6  0.000
+11               2  0.000
+
+=== KEY INSIGHTS ===
+
+1. Only 41.5% of passengers survived.
+2. Women survived at 73.9% vs men at 22.0% ("women and children first").
+3. 1st class survival was 64.1% vs 26.0% in 3rd class - wealth mattered.
+4. Fare is strongly right-skewed: mean 35.0 vs median 16.1.
+5. Passengers travelling alone survived less than small families (see FAMILY SIZE table).
